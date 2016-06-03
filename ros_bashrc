@@ -1,47 +1,38 @@
+# # # # # # # # # # # # # # #
+# VARIABLES	            # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# # # # # # # # # # # # # # #
+
 #IP_LOCAL=192.168.1.100
 #IP_MASTER=192.168.1.20
 IP_MASTER=localhost
 
-ROSBUILD="/home/parallels/ros_workspace"
-CATKIN="/media/psf/catkin"
-PAQUETE1="/home/parallels/ros_workspace/patatitas"
-PAQUETE2="/media/psf/catkin/src"
+# ROSBUILD="/home/parallels/ros_workspace"
+CATKIN="/home/cabama/catkin"
+PAQUETE="/home/cabama/catkin/src/"
 
-# Cargamos el archivo de configuraci��n
-# source '/home/parallels/.ros_config' # Cargamos el archivo config que se encuentra en el mismo directorio que este script
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 # Cargamos ROS
+
 source /opt/ros/indigo/setup.bash
 source $CATKIN"/devel/setup.bash"
 
 
 # EXPORTAMOS LAS VARIABLES DE IPMASTER, IPLOCAL Y EL PAQUETE DE ROS.
-export ROS_MASTER_URI='http://'$IP_MASTER':11311'
-export ROS_IP=$IP_LOCAL
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$CATKIN:/opt/ros/indigo/share:/opt/ros/indigo/stacks
-export ROS_WORKSPACE=$CATKIN                  
+
+## Descomentar si se va utilizar varias maquinas
+#export ROS_MASTER_URI='http://'$IP_MASTER':11311'
+#export ROS_IP=$IP_LOCAL
+
+export ROS_PACKAGE_PATH=$CATKIN/src:$ROS_PACKAGE_PATH
+export ROS_WORKSPACE=$CATKIN
+                 
 # Cargamos el paquete en PYTHONPATH para lanzar script de python en cualquier lugar.
 # export PYTHONPATH=$PYTHONPATH:$RUTA_ROS_PKG
 
-# Cargamos la ruta del ROBOTMANAGER                 # Con este comando obtenemos ubicaci��n de este Script.
-# export ROBOT_MANAGER=$ROBOT_DIR     # Con esto creamos una variable del sistema que orienta hasta robotManager.
-
-
 # # # # # # # # # # # # # # #
-# ATAJOS RAPIDOS            # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ALIAS		            # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # # # # # # # # # # # # # # #
-alias go2aristarko='cd '$RUTA_ROS_PKG
-alias go2src='cd '$RUTA_CODIGO
-alias go2nodos='cd '$RUTA_CODIGO.'/nodos/'
-alias go2sensores='cd '$RUTA_CODIGO'/sensores/'
 
-
-
-
-# # # # # # # # # # # # # # #
-# ATAJOS RAPIDOS            # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# # # # # # # # # # # # # # #
-alias go2aristarko='cd '$RUTA_ROS_PKG
-alias go2src='cd '$RUTA_CODIGO
-alias go2nodos='cd '$RUTA_CODIGO.'/nodos/'
-alias go2sensores='cd '$RUTA_CODIGO'/sensores/'
+alias roscat="roscd && catkin_make && cd -"
