@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RosCLion
+Icon=/home/cabama/Descargas/clion-1.2.2/bin/clion.svg
+Exec=bash -c "JAVA_TOOL_OPTIONS=\"-javaagent:/usr/share/java/jayatanaag.jar $JAVA_TOOL_OPTIONS\"; source /opt/ros/indigo/setup.bash;source ~/YOUR/CATKIN/WORKSPACE/devel/setup.bash; /home/cabama/Descargas/clion-1.2.2/bin/clion.sh" %f
+Comment=Develop with pleasure!
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-clion

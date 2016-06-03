@@ -1,0 +1,38 @@
+# # # # # # # # # # # # # # #
+# VARIABLES	            # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# # # # # # # # # # # # # # #
+
+#IP_LOCAL=192.168.1.100
+#IP_MASTER=192.168.1.20
+IP_MASTER=localhost
+
+# ROSBUILD="/home/parallels/ros_workspace"
+CATKIN="/home/cabama/catkin"
+PAQUETE="/home/cabama/catkin/src/"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+# Cargamos ROS
+
+source /opt/ros/indigo/setup.bash
+source $CATKIN"/devel/setup.bash"
+
+
+# EXPORTAMOS LAS VARIABLES DE IPMASTER, IPLOCAL Y EL PAQUETE DE ROS.
+
+## Descomentar si se va utilizar varias maquinas
+#export ROS_MASTER_URI='http://'$IP_MASTER':11311'
+#export ROS_IP=$IP_LOCAL
+
+export ROS_PACKAGE_PATH=$CATKIN:$ROS_PACKAGE_PATH
+export ROS_WORKSPACE=$CATKIN
+                 
+# Cargamos el paquete en PYTHONPATH para lanzar script de python en cualquier lugar.
+# export PYTHONPATH=$PYTHONPATH:$RUTA_ROS_PKG
+
+# # # # # # # # # # # # # # #
+# ALIAS		            # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# # # # # # # # # # # # # # #
+
+alias roscat="roscd && catkin_make && cd -"
